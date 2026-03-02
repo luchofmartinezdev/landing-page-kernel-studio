@@ -18,31 +18,30 @@ export class Projects {
       title: 'Agile Poker Planning',
       type: 'Agile Tool',
       desc: 'Aplicación para estimaciones ágiles con story points.',
-      tech: ['Angular', 'Real-time'],
+      tech: ['Herramienta', 'Angular'],
+      textColor: 'text-purple-500'
+    },
+    {
+      title: 'Metrics Dashboard',
+      type: 'Agile Tool',
+      desc: 'Aplicación para visualizar metricas de desarrollo y QA.',
+      tech: ['Herramienta', 'JIRA', 'Angular'],
       textColor: 'text-purple-500'
     },
     {
       title: 'Steam Tax Calculator',
       type: 'Web / Herramienta',
       desc: 'Calculadora de impuestos para compras en Steam, adaptada a las regulaciones vigentes en Argentina.',
-      tech: ['JS', 'Local Economy'],
+      tech: ['Flutter', 'Mobile', 'Impuestos'],
       textColor: 'text-orange-600'
     },
     {
-      title: 'Poke-Trivia',
-      type: 'Game / Fun',
-      desc: 'Juego de preguntas y respuestas basado en la PokeAPI para fanáticos del coleccionismo.',
-      tech: ['PokeAPI', 'Mobile First'],
+      title: 'TuMarketTCG',
+      type: 'Social / Trading Card Game',
+      desc: 'Plataforma para compra y venta de cartas de coleccionismo.',
+      tech: ['Angular', 'Firebase'],
       textColor: 'text-yellow-500'
     },
-    {
-      title: 'GolApp',
-      type: 'Flutter / Firebase',
-      desc: 'Gestión de torneos de fútbol con arquitectura Layer-First y Cubit.',
-      tech: ['Clean Architecture'],
-      textColor: 'text-blue-500'
-    },
-
     {
       title: 'PetLovers',
       type: 'Social / Rescate',
@@ -68,16 +67,16 @@ export class Projects {
     }
   }
   getTranslation() {
-  if (!isPlatformBrowser(this.platformId)) return 'translateX(0)';
+    if (!isPlatformBrowser(this.platformId)) return 'translateX(0)';
 
-  // Calculamos el porcentaje de desplazamiento según el breakpoint
-  // En mobile desplazamos 100% por vez, en desktop 33.333%
-  const multiplier = this.isMobile() ? 100 : 33.333;
-  
-  // Agregamos un pequeño ajuste si usás gaps (opcional)
-  // Pero con 33.333% y gap-6 en el contenedor suele alinear bien
-  return `translateX(-${this.currentIndex() * multiplier}%)`;
-}
+    // Calculamos el porcentaje de desplazamiento según el breakpoint
+    // En mobile desplazamos 100% por vez, en desktop 33.333%
+    const multiplier = this.isMobile() ? 100 : 33.333;
+
+    // Agregamos un pequeño ajuste si usás gaps (opcional)
+    // Pero con 33.333% y gap-6 en el contenedor suele alinear bien
+    return `translateX(-${this.currentIndex() * multiplier}%)`;
+  }
 
   next() {
     const itemsToShow = this.isMobile() ? 1 : 3;
