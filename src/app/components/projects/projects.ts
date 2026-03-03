@@ -24,8 +24,8 @@ export class Projects {
     {
       title: 'Metrics Dashboard',
       type: 'Agile Tool',
-      desc: 'Aplicación para visualizar metricas de desarrollo y QA.',
-      tech: ['Herramienta', 'JIRA', 'Angular'],
+      desc: 'Dashboard personalizado de métricas de gestión de proyectos de software.',
+      tech: ['Sheet', 'JIRA', 'Flutter Web'],
       textColor: 'text-purple-500'
     },
     {
