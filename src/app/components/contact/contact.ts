@@ -7,20 +7,35 @@ import { Component, signal } from '@angular/core';
   styleUrl: './contact.css',
 })
 export class Contact {
-// Signal para manejar el estado del formulario
+  // Signal para manejar el estado del formulario
   status = signal<'idle' | 'sending' | 'success'>('idle');
 
   async onSubmit(event: Event) {
-    event.preventDefault(); // Evitamos que la página se recargue
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const data = new FormData(form);
+
     this.status.set('sending');
 
-    // Simulamos el envío (Aquí es donde iría tu lógica de Formspree, Netlify o API)
-    // Usamos setTimeout para que el usuario vea que "algo pasa"
-    setTimeout(() => {
-      this.status.set('success');
-      
-      // Opcional: Volver al estado normal después de unos segundos
-      // setTimeout(() => this.status.set('idle'), 5000);
-    }, 1500);
+    try {
+      const response = await fetch('https://formspree.io/f/xzdaggjv', {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        this.status.set('success');
+        form.reset(); // Limpia el formulario
+      } else {
+        this.status.set('idle');
+        alert('Hubo un error al enviar el mensaje. Intentá de nuevo.');
+      }
+    } catch (error) {
+      this.status.set('idle');
+      alert('Error de conexión. Revisá tu internet.');
+    }
   }
 }

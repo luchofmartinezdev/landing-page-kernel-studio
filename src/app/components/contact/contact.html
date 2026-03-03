@@ -1,6 +1,6 @@
 <section id="contact" class="bg-slate-900 py-24 px-6 border-t border-slate-800">
   <div class="max-w-4xl mx-auto">
-    
+
     <div class="text-center mb-16">
       <div class="flex justify-center items-center gap-3 mb-4">
         <div class="h-[1px] w-8 bg-[#00d2d3]"></div>
@@ -11,52 +11,56 @@
         Hablemos de tu próximo proyecto
       </h2>
       <p class="text-slate-400 max-w-xl mx-auto leading-relaxed">
-        Completá el formulario para coordinar un diagnóstico gratuito y analizar cómo podemos potenciar tu negocio con software a medida.
+        Completá el formulario para coordinar un diagnóstico gratuito y analizar cómo podemos potenciar tu negocio con
+        software a medida.
       </p>
     </div>
 
-    <div class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl mx-auto">
-      
+    <div
+      class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl mx-auto">
+
       @if (status() === 'success') {
-        <div class="text-center py-10 animate-in fade-in zoom-in duration-500">
-          <div class="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-500/20">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-3 tracking-tight uppercase">¡Mensaje enviado!</h3>
-          <p class="text-slate-400 mb-8">Gracias por confiar en Kernel Studio. Te responderemos en menos de 24 horas.</p>
-          <button (click)="status.set('idle')" 
-                  class="text-[#00d2d3] text-xs font-black uppercase tracking-widest hover:text-white transition-colors">
-            ← Enviar otro mensaje
-          </button>
+      <div class="text-center py-10 animate-in fade-in zoom-in duration-500">
+        <div
+          class="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            class="w-10 h-10">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
         </div>
+        <h3 class="text-2xl font-bold text-white mb-3 tracking-tight uppercase">¡Mensaje enviado!</h3>
+        <p class="text-slate-400 mb-8">Gracias por confiar en Kernel Studio. Te responderemos en menos de 24 horas.</p>
+        <button (click)="status.set('idle')"
+          class="text-[#00d2d3] text-xs font-black uppercase tracking-widest hover:text-white transition-colors">
+          ← Enviar otro mensaje
+        </button>
+      </div>
       } @else {
-        <form (submit)="onSubmit($event)" class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="space-y-2">
-              <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Nombre</label>
-              <input type="text" placeholder="Tu nombre" required 
-                class="w-full bg-slate-900/50 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-[#00d2d3]/50 focus:ring-1 focus:ring-[#00d2d3]/20 transition-all placeholder:text-slate-700">
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Email</label>
-              <input type="email" placeholder="tu@email.com" required 
-                class="w-full bg-slate-900/50 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-[#00d2d3]/50 focus:ring-1 focus:ring-[#00d2d3]/20 transition-all placeholder:text-slate-700">
-            </div>
-          </div>
-          
+      <form (submit)="onSubmit($event)" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="space-y-2">
-            <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Mensaje</label>
-            <textarea placeholder="Contanos brevemente qué necesitás resolver..." rows="4" required
-              class="w-full bg-slate-900/50 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-[#00d2d3]/50 focus:ring-1 focus:ring-[#00d2d3]/20 transition-all placeholder:text-slate-700 resize-none"></textarea>
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Nombre</label>
+            <input type="text" name="name" placeholder="Tu nombre" required
+              class="w-full bg-slate-900/50 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-[#00d2d3]/50 focus:ring-1 focus:ring-[#00d2d3]/20 transition-all placeholder:text-slate-700">
           </div>
-          
-          <button type="submit" [disabled]="status() === 'sending'"
-            class="w-full bg-[#00d2d3] text-slate-900 font-black py-5 rounded-2xl hover:bg-[#00d2d3]/90 hover:-translate-y-1 active:translate-y-0 transition-all disabled:opacity-50 uppercase tracking-[0.2em] text-xs shadow-xl shadow-[#00d2d3]/20 mt-4">
-            {{ status() === 'sending' ? 'Procesando...' : 'Enviar consulta' }}
-          </button>
-        </form>
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Email</label>
+            <input type="email" name="email" placeholder="tu@email.com" required
+              class="w-full bg-slate-900/50 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-[#00d2d3]/50 focus:ring-1 focus:ring-[#00d2d3]/20 transition-all placeholder:text-slate-700">
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Mensaje</label>
+          <textarea placeholder="Contanos brevemente qué necesitás resolver..." name="message" rows="4" required
+            class="w-full bg-slate-900/50 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-[#00d2d3]/50 focus:ring-1 focus:ring-[#00d2d3]/20 transition-all placeholder:text-slate-700 resize-none"></textarea>
+        </div>
+
+        <button type="submit" [disabled]="status() === 'sending'"
+          class="w-full bg-[#00d2d3] text-slate-900 font-black py-5 rounded-2xl hover:bg-[#00d2d3]/90 hover:-translate-y-1 active:translate-y-0 transition-all disabled:opacity-50 uppercase tracking-[0.2em] text-xs shadow-xl shadow-[#00d2d3]/20 mt-4">
+          {{ status() === 'sending' ? 'Procesando...' : 'Enviar consulta' }}
+        </button>
+      </form>
       }
     </div>
 
