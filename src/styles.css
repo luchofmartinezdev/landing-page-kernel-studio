@@ -8,4 +8,10 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Compensa el header fijo (h-20 = 80px) al navegar por anclas */
+section[id],
+[id="home"] {
+  scroll-margin-top: 80px;
 } 

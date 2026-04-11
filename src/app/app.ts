@@ -1,5 +1,4 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Hero } from "./components/hero/hero";
 import { Projects } from "./components/projects/projects";
 import { Contact } from "./components/contact/contact";

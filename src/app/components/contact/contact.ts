@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-contact',
-  imports: [],
+  imports: [AnimateOnScrollDirective],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
