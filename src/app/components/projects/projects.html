@@ -28,19 +28,19 @@
 
     <!-- Tabs -->
     <div class="flex gap-1 mb-10 bg-slate-800/40 border border-slate-700/50 p-1 rounded-xl w-fit">
-      <button (click)="setTab('propio')"
-        [class]="activeTab() === 'propio'
-          ? 'bg-[#00d2d3] text-slate-900 font-black'
-          : 'text-slate-400 hover:text-white'"
-        class="px-5 py-2 rounded-lg text-xs uppercase tracking-widest font-bold transition-all">
-        Propios
-      </button>
       <button (click)="setTab('cliente')"
         [class]="activeTab() === 'cliente'
           ? 'bg-[#00d2d3] text-slate-900 font-black'
           : 'text-slate-400 hover:text-white'"
         class="px-5 py-2 rounded-lg text-xs uppercase tracking-widest font-bold transition-all">
         Para clientes
+      </button>
+      <button (click)="setTab('propio')"
+        [class]="activeTab() === 'propio'
+          ? 'bg-[#00d2d3] text-slate-900 font-black'
+          : 'text-slate-400 hover:text-white'"
+        class="px-5 py-2 rounded-lg text-xs uppercase tracking-widest font-bold transition-all">
+        Propios
       </button>
     </div>
 

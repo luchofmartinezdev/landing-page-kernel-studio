@@ -13,7 +13,7 @@ type Category = 'propio' | 'cliente';
 export class Projects {
   currentIndex = signal(0);
   isMobile = signal(false);
-  activeTab = signal<Category>('propio');
+  activeTab = signal<Category>('cliente');
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
