@@ -19,6 +19,14 @@ export class Projects {
 
   allProjects = [
     {
+      title: 'Cuentas Claras',
+      type: 'Web / Finanzas',
+      desc: 'Aplicación para llevar el control de tus gastos. Permite registrar gastos, y llevar de forma clara y sencilla tus propias finanzas.',
+      tech: ['Flutter Web', 'Supabase'],
+      textColor: 'text-blue-400',
+      category: 'propio' as Category,
+    },
+    {
       title: 'Prodeus',
       type: 'Web / Sports',
       desc: 'Plataforma de prode público con grupos, predicciones y ranking en tiempo real. Incluye panel de administración de torneos, partidos y sistema automático de puntuación.',
