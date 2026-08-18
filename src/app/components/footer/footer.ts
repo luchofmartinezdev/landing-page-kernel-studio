@@ -1,4 +1,5 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, Inject, PLATFORM_ID, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -8,24 +9,24 @@ import { environment } from '../../../environments/environment';
   styleUrl: './footer.css',
 })
 export class Footer {
-// Usamos una Signal para que sea ultra eficiente en Zoneless
   showScrollButton = signal(false);
   showInstagram = environment.showInstagram;
   showLinkedin = environment.showLinkedin;
   instagramUrl = environment.instagramUrl;
   linkedinUrl = environment.linkedinUrl;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    // Si el scroll es mayor a 300px, mostramos el botón
-    const scrollOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if (!isPlatformBrowser(this.platformId)) return;
+    const scrollOffset =
+      window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     this.showScrollButton.set(scrollOffset > 300);
   }
 
   scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    if (!isPlatformBrowser(this.platformId)) return;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

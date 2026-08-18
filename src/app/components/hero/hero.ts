@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [AnimateOnScrollDirective],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
-export class Hero {
-
-}
+export class Hero {}

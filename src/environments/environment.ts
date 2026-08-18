@@ -2,6 +2,6 @@
 export const environment = {
   showInstagram: true,
   showLinkedin: true,
-  instagramUrl: "https://www.instagram.com/kernelstudio.solutions/",
+  instagramUrl: "https://www.instagram.com/",
   linkedinUrl: "https://www.linkedin.com/company/kernel-studio-solutions",
 };
