@@ -14,8 +14,10 @@
       </ul>
     </nav>
 
-    <button (click)="toggleMenu()" class="md:hidden text-white focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+    <button (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen()" aria-controls="mobile-menu"
+      [attr.aria-label]="isMenuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      class="md:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00d2d3] rounded-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8" aria-hidden="true">
         @if (!isMenuOpen()) {
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         } @else {
@@ -26,7 +28,7 @@
   </div>
 
   @if (isMenuOpen()) {
-    <div class="md:hidden absolute top-20 left-0 w-full bg-slate-900 border-b border-slate-800 animate-in slide-in-from-top duration-300">
+    <div id="mobile-menu" class="md:hidden absolute top-20 left-0 w-full bg-slate-900 border-b border-slate-800 animate-in slide-in-from-top duration-300">
       <ul class="flex flex-col p-6 space-y-6 text-center text-sm font-bold uppercase tracking-widest">
         <li><a href="#home" (click)="closeMenu()" class="text-white block">Inicio</a></li>
         <li><a href="#about" (click)="closeMenu()" class="text-white block">Nosotros</a></li>

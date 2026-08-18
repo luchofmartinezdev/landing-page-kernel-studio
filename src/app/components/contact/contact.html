@@ -20,7 +20,7 @@
       class="bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl mx-auto">
 
       @if (status() === 'success') {
-      <div class="text-center py-10 animate-in fade-in zoom-in duration-500">
+      <div role="status" aria-live="polite" class="text-center py-10 animate-in fade-in zoom-in duration-500">
         <div
           class="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-500/20">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -56,8 +56,15 @@
             class="w-full bg-slate-900/50 border border-slate-700 text-white p-4 rounded-2xl focus:outline-none focus:border-[#00d2d3]/50 focus:ring-1 focus:ring-[#00d2d3]/20 transition-all placeholder:text-slate-700 resize-none"></textarea>
         </div>
 
-        <button type="submit" [disabled]="status() === 'sending'"
-          class="w-full bg-[#00d2d3] text-slate-900 font-black py-5 rounded-2xl hover:bg-[#00d2d3]/90 hover:-translate-y-1 active:translate-y-0 transition-all disabled:opacity-50 uppercase tracking-[0.2em] text-xs shadow-xl shadow-[#00d2d3]/20 mt-4">
+        @if (errorMessage()) {
+          <div role="alert" aria-live="polite"
+            class="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-2xl px-4 py-3">
+            {{ errorMessage() }}
+          </div>
+        }
+
+        <button type="submit" [disabled]="status() === 'sending'" [attr.aria-busy]="status() === 'sending'"
+          class="w-full bg-[#00d2d3] text-slate-900 font-black py-5 rounded-2xl hover:bg-[#00d2d3]/90 hover:-translate-y-1 active:translate-y-0 transition-all disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[0.2em] text-xs shadow-xl shadow-[#00d2d3]/20 mt-4">
           {{ status() === 'sending' ? 'Procesando...' : 'Enviar consulta' }}
         </button>
       </form>

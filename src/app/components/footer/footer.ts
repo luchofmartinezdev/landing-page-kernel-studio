@@ -1,4 +1,5 @@
 import { Component, HostListener, signal } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,10 @@ import { Component, HostListener, signal } from '@angular/core';
 export class Footer {
 // Usamos una Signal para que sea ultra eficiente en Zoneless
   showScrollButton = signal(false);
+  showInstagram = environment.showInstagram;
+  showLinkedin = environment.showLinkedin;
+  instagramUrl = environment.instagramUrl;
+  linkedinUrl = environment.linkedinUrl;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

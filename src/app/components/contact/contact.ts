@@ -9,6 +9,7 @@ import { Component, signal } from '@angular/core';
 export class Contact {
   // Signal para manejar el estado del formulario
   status = signal<'idle' | 'sending' | 'success'>('idle');
+  errorMessage = signal<string | null>(null);
 
   async onSubmit(event: Event) {
     event.preventDefault();
@@ -16,6 +17,7 @@ export class Contact {
     const data = new FormData(form);
 
     this.status.set('sending');
+    this.errorMessage.set(null);
 
     try {
       const response = await fetch('https://formspree.io/f/xzdaggjv', {
@@ -31,11 +33,11 @@ export class Contact {
         form.reset(); // Limpia el formulario
       } else {
         this.status.set('idle');
-        alert('Hubo un error al enviar el mensaje. Intentá de nuevo.');
+        this.errorMessage.set('Hubo un error al enviar el mensaje. Intentá de nuevo.');
       }
     } catch (error) {
       this.status.set('idle');
-      alert('Error de conexión. Revisá tu internet.');
+      this.errorMessage.set('Error de conexión. Revisá tu internet.');
     }
   }
 }

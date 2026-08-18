@@ -95,4 +95,14 @@ export class Projects {
       this.currentIndex.set(Math.max(0, this.projects.length - itemsToShow));
     }
   }
+
+  goTo(index: number) {
+    this.currentIndex.set(index);
+  }
+
+  get dots(): number[] {
+    const itemsToShow = this.isMobile() ? 1 : 3;
+    const totalPages = Math.max(1, this.projects.length - itemsToShow + 1);
+    return Array.from({ length: totalPages }, (_, i) => i);
+  }
 }
